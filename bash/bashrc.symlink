@@ -49,9 +49,9 @@ umask 0022
 PATH="$PATH:/usr/local/sbin:/usr/sbin:/sbin"
 PATH="/usr/local/bin:$PATH"
 
-# put ~/bin on PATH if you have it
-test -d "$HOME/bin" &&
-PATH="$HOME/bin:$PATH"
+# put ~/.dotfiles/bin on PATH if you have it
+test -d "$HOME/.dotfiles/bin" &&
+PATH="$HOME/.dotfiles/bin:$PATH"
 
 # ----------------------------------------------------------------------
 # ENVIRONMENT CONFIGURATION
@@ -164,18 +164,6 @@ prompt_color() {
 # ----------------------------------------------------------------------
 
 if [ "$UNAME" = Darwin ]; then
-    # put ports on the paths if /opt/local exists
-    test -x /opt/local -a ! -L /opt/local && {
-        PORTS=/opt/local
-
-        # setup the PATH and MANPATH
-        PATH="$PORTS/bin:$PORTS/sbin:$PATH"
-        MANPATH="$PORTS/share/man:$MANPATH"
-
-        # nice little port alias
-        alias port="sudo nice -n +18 $PORTS/bin/port"
-    }
-
     test -x /usr/pkg -a ! -L /usr/pkg && {
         PATH="/usr/pkg/sbin:/usr/pkg/bin:$PATH"
         MANPATH="/usr/pkg/share/man:$MANPATH"
@@ -190,6 +178,13 @@ if [ "$UNAME" = Darwin ]; then
     test -d /opt/jruby &&
     JRUBY_HOME="/opt/jruby"
     export JRUBY_HOME
+
+    # Python environment
+    source /usr/local/bin/virtualenvwrapper.sh
+    [[ -s $HOME/.pythonbrew/etc/bashrc ]] && source $HOME/.pythonbrew/etc/bashrc
+
+    # Node environment
+    export NODE_PATH=/usr/local/lib/node_modules
 fi
 
 # ----------------------------------------------------------------------
@@ -329,9 +324,6 @@ man () {
 # -------------------------------------------------------------------
 # USER SHELL ENVIRONMENT
 # -------------------------------------------------------------------
-
-# bring in rbdev functions
-. rbdev 2>/dev/null || true
 
 # source ~/.shenv now if it exists
 test -r ~/.shenv &&

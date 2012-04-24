@@ -1,7 +1,7 @@
 #!/bin/sh
 # user bash completion definitions
 
-: ${USER_BASH_COMPLETION_DIR:=~/.bash_completion.d}
+: ${USER_BASH_COMPLETION_DIR:=~/.dotfiles/bash_completion.d}
 
 test -n "$USER_BASH_COMPLETION_DIR" && {
   # source completion directory definitions
