@@ -201,7 +201,6 @@ test -z "$BASH_COMPLETION" && {
         # search for a bash_completion file to source
         for f in /usr/local/etc/bash_completion \
                  /usr/pkg/etc/bash_completion \
-                 /opt/local/etc/bash_completion \
                  /etc/bash_completion
         do
             test -f $f && {
