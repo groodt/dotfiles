@@ -1,8 +1,8 @@
 #!/bin/sh
 # user bash completion definitions
 
-: ${USER_BASH_COMPLETION_DIR:=~/.dotfiles/bash_completion.d}
-
+: ${USER_BASH_COMPLETION_DIR:=~/.dotfiles/bash/bash_completion.d}
+echo $USER_BASH_COMPLETION_DIR
 test -n "$USER_BASH_COMPLETION_DIR" && {
   # source completion directory definitions
   if [ -d $USER_BASH_COMPLETION_DIR -a -r $USER_BASH_COMPLETION_DIR -a \
