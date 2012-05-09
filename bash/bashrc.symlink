@@ -81,7 +81,7 @@ export LANG LANGUAGE LC_CTYPE LC_ALL
 export FTP_PASSIVE
 
 # ignore backups, CVS directories, python bytecode, vim swap files
-FIGNORE="~:CVS:#:.pyc:.swp:.swa:apache-solr-*"
+FIGNORE="~:CVS:#:.pyc:.swp:.swa"
 
 # history stuff
 HISTCONTROL=ignoreboth
@@ -173,11 +173,6 @@ if [ "$UNAME" = Darwin ]; then
     MAVEN_OPTS="-Xmx512m -XX:MaxPermSize=256m"
     export JAVA_HOME ANT_HOME ANT_OPTS M2_HOME MAVEN_OPTS
 
-    # hold jruby's hand
-    test -d /opt/jruby &&
-    JRUBY_HOME="/opt/jruby"
-    export JRUBY_HOME
-
     # Python environment
     source /usr/local/bin/virtualenvwrapper.sh
     [[ -s $HOME/.pythonbrew/etc/bashrc ]] && source $HOME/.pythonbrew/etc/bashrc
@@ -203,6 +198,7 @@ test -z "$BASH_COMPLETION" && {
     bash=${BASH_VERSION%.*}; bmajor=${bash%.*}; bminor=${bash#*.}
     test -n "$PS1" && test $bmajor -gt 1 && {
         # search for a bash_completion file to source
+        # on OSX you can use brew to install bash-completion
         for f in /usr/local/etc/bash_completion \
                  /usr/pkg/etc/bash_completion \
                  /etc/bash_completion
