@@ -1,0 +1,3 @@
+#!/bin/sh
+# Case insensitive grep of your env.
+exec env | grep -i "$@"
