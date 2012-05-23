@@ -1,0 +1,3 @@
+#!/bin/sh
+# Lists all applications that are LISTENING for connections.
+lsof -i -P | grep -i listen | awk '{ print $1 " " $2 " " $9 }'
