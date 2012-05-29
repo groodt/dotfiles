@@ -1,0 +1,9 @@
+#!/bin/sh
+
+# cat the contents of a file or script located with which.
+
+COMMAND=`which $@`
+if [ -n "$COMMAND" ] 
+then
+    cat $COMMAND
+fi
