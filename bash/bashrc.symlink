@@ -168,7 +168,7 @@ if [ "$UNAME" = Darwin ]; then
     }
 
     # setup java environment. puke.
-    JAVA_HOME="/Library/Java/Home"
+    JAVA_HOME=$(/usr/libexec/java_home)
     #JAVA_HOME="/Library/Java/JavaVirtualMachines/1.6.0_29-b11-402.jdk/Contents/Home/"
     #JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk1.7.0_07.jdk/Contents/Home/"
     ANT_HOME="/Developer/Java/Ant"
