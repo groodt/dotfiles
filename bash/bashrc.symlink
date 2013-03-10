@@ -184,6 +184,14 @@ if [ "$UNAME" = Darwin ]; then
 
     # Node environment
     export NODE_PATH=/usr/local/lib/node_modules
+
+    # Android
+    ANDROID_HOME="$HOME/dev/android-sdk-macosx"
+    ANDROID_SDK="$ANDROID_HOME"
+    ANDROID_TOOLS="$ANDROID_HOME/tools"
+    export ANDROID_HOME ANDROID_SDK ANDROID_TOOLS
+
+    PATH="$PATH:$ANDROID_TOOLS:$ANDROID_HOME/platform-tools"
 fi
 
 # ----------------------------------------------------------------------
@@ -312,12 +320,6 @@ ppush () { eval "${2:-PATH}='$(eval echo \$${2:-PATH})':$1"; }
 puniq () {
     echo "$1" |tr : '\n' |nl |sort -u -k 2,2 |sort -n |
     cut -f 2- |tr '\n' : |sed -e 's/:$//' -e 's/^://'
-}
-
-# use gem-man(1) if available:
-man () {
-    gem man -s "$@" 2>/dev/null ||
-    command man "$@"
 }
 
 # -------------------------------------------------------------------
