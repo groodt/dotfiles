@@ -182,9 +182,6 @@ if [ "$UNAME" = Darwin ]; then
     source /usr/local/bin/virtualenvwrapper.sh
     [[ -s $HOME/.pythonbrew/etc/bashrc ]] && source $HOME/.pythonbrew/etc/bashrc
 
-    # Node environment
-    export NODE_PATH=/usr/local/lib/node_modules
-
     # Android
     ANDROID_HOME="$HOME/dev/android-sdk-macosx"
     ANDROID_SDK="$ANDROID_HOME"
