@@ -182,13 +182,20 @@ if [ "$UNAME" = Darwin ]; then
     source /usr/local/bin/virtualenvwrapper.sh
     [[ -s $HOME/.pythonbrew/etc/bashrc ]] && source $HOME/.pythonbrew/etc/bashrc
 
+    # Node
+    export NODE_PATH="/usr/local/lib/node"
+    export NPM_PATH="/usr/local/share/npm"
+
     # Android
     ANDROID_HOME="$HOME/dev/android-sdk-macosx"
     ANDROID_SDK="$ANDROID_HOME"
     ANDROID_TOOLS="$ANDROID_HOME/tools"
     export ANDROID_HOME ANDROID_SDK ANDROID_TOOLS
 
-    PATH="$PATH:$ANDROID_TOOLS:$ANDROID_HOME/platform-tools"
+    PATH="$PATH:$ANDROID_TOOLS:$ANDROID_HOME/platform-tools:$NPM_PATH/bin"
+
+    # RBENV
+    eval "$(rbenv init -)"
 fi
 
 # ----------------------------------------------------------------------
