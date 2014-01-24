@@ -180,7 +180,6 @@ if [ "$UNAME" = Darwin ]; then
 
     # Python environment
     source /usr/local/bin/virtualenvwrapper.sh
-    [[ -s $HOME/.pythonbrew/etc/bashrc ]] && source $HOME/.pythonbrew/etc/bashrc
 
     # Node
     export NODE_PATH="/usr/local/lib/node"
