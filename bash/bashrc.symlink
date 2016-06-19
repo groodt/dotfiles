@@ -167,16 +167,17 @@ if [ "$UNAME" = Darwin ]; then
         MANPATH="/usr/pkg/share/man:$MANPATH"
     }
 
-    # setup java environment. puke.
+    # Java environment. 
     JAVA_HOME=$(/usr/libexec/java_home)
     #JAVA_HOME="/Library/Java/JavaVirtualMachines/1.6.0_29-b11-402.jdk/Contents/Home/"
     #JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk1.7.0_07.jdk/Contents/Home/"
+
     ANT_HOME="/Developer/Java/Ant"
     ANT_OPTS="-Xmx512m"
 
-    M2_HOME="/usr/share/maven"
-    MAVEN_OPTS="-Xmx512m -XX:MaxPermSize=256m"
-    export JAVA_HOME ANT_HOME ANT_OPTS M2_HOME MAVEN_OPTS
+    MAVEN_HOME="/usr/share/maven"
+    MAVEN_OPTS="-Xmx512m"
+    export JAVA_HOME ANT_HOME ANT_OPTS MAVEN_HOME MAVEN_OPTS
 
     # Python environment
     source /usr/local/bin/virtualenvwrapper.sh
@@ -196,11 +197,18 @@ if [ "$UNAME" = Darwin ]; then
     # RBENV
     eval "$(rbenv init -)"
 
+    # PYENV
+    eval "$(pyenv init -)"
+    eval "$(pyenv virtualenv-init -)"
+
     # Add GHC 7.8.3 to the PATH, via http://ghcformacosx.github.io/
     export GHC_DOT_APP="/Applications/ghc-7.8.3.app"
     if [ -d "$GHC_DOT_APP" ]; then
         export PATH="${HOME}/.cabal/bin:${GHC_DOT_APP}/Contents/bin:${PATH}"
     fi
+
+    # Cabal
+    export PATH=".cabal-sandbox/bin:$PATH"
 fi
 
 # ----------------------------------------------------------------------
