@@ -53,8 +53,8 @@ PATH="/usr/local/bin:$PATH"
 PATH="$HOME/bin:$PATH"
 
 # put ~/.dotfiles/bin on PATH if you have it
-test -d "$HOME/.dotfiles/bin" &&
-PATH="$HOME/.dotfiles/bin:$PATH"
+test -d "$HOME/dotfiles/bin" &&
+PATH="$HOME/dotfiles/bin:$PATH"
 
 # ----------------------------------------------------------------------
 # ENVIRONMENT CONFIGURATION
@@ -168,33 +168,28 @@ if [ "$UNAME" = Darwin ]; then
     }
 
     # Java environment. 
-    #JAVA_HOME=$(/usr/libexec/java_home)
-    JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk1.8.0_101.jdk/Contents/Home"
-    export JAVA_TOOL_OPTIONS="-Dapple.awt.UIElement=true"
+    JAVA_HOME=$(/usr/libexec/java_home)
+    #JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk1.8.0_101.jdk/Contents/Home"
     #JAVA_HOME="/Library/Java/JavaVirtualMachines/1.6.0_29-b11-402.jdk/Contents/Home/"
     #JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk1.7.0_07.jdk/Contents/Home/"
 
     ANT_HOME="/Developer/Java/Ant"
     ANT_OPTS="-Xmx512m"
 
-    MAVEN_HOME="/usr/local/Cellar/maven/3.3.3/"
+    MAVEN_HOME="/usr/local/Cellar/maven/3.3.3"
     MAVEN_OPTS="-Xmx512m"
     export JAVA_HOME ANT_HOME ANT_OPTS MAVEN_HOME MAVEN_OPTS
 
     # Python environment
     source /usr/local/bin/virtualenvwrapper.sh
 
-    # Node
-    export NODE_PATH="/usr/local/lib/node:/usr/local/lib/node_modules"
-    export NPM_PATH="/usr/local/share/npm"
-
     # Android
-    ANDROID_HOME="$HOME/dev/android-sdk-macosx"
+    ANDROID_HOME="$HOME/Library/Android/sdk"
     ANDROID_SDK="$ANDROID_HOME"
     ANDROID_TOOLS="$ANDROID_HOME/tools"
     export ANDROID_HOME ANDROID_SDK ANDROID_TOOLS
 
-    PATH="$PATH:$MAVEN_HOME/bin:$ANDROID_TOOLS:$ANDROID_HOME/platform-tools:$NPM_PATH/bin"
+    PATH="$PATH:$MAVEN_HOME/bin:$ANDROID_TOOLS:$ANDROID_HOME/platform-tools"
 
     # RBENV
     eval "$(rbenv init -)"
@@ -202,15 +197,6 @@ if [ "$UNAME" = Darwin ]; then
     # PYENV
     eval "$(pyenv init -)"
     eval "$(pyenv virtualenv-init -)"
-
-    # Add GHC 7.8.3 to the PATH, via http://ghcformacosx.github.io/
-    export GHC_DOT_APP="/Applications/ghc-7.8.3.app"
-    if [ -d "$GHC_DOT_APP" ]; then
-        export PATH="${HOME}/.cabal/bin:${GHC_DOT_APP}/Contents/bin:${PATH}"
-    fi
-
-    # Cabal
-    export PATH=".cabal-sandbox/bin:$PATH"
 fi
 
 # ----------------------------------------------------------------------
